@@ -2,16 +2,16 @@
     "options": [],
     "command": {
         "type": 1,
-        "name": "reklama",
-        "description": "Покажет рекламное объявление от Пик.",
+        "name": "reklama_v2",
+        "description": "Покажет рекламное объявление от Пик в модальном окне.",
         "options": []
     },
-    "id": "1447224710659182746",
+    "id": "1447228000000000000",
     "scripts": [
         {
             "name": null,
             "language": 1,
-            "code": "const modalData = {\n  \"en-US\": {\n    title: \"Pik's Secrets Revealed! ✨\",\n    description: \"Want to know all my secrets? My laziness is an art, and sarcasm is just a form of affection. Join my shadow empire! *evil cackle* 😈💅\",\n    description_label: \"Pik's Description:\"\n  },\n  ru: {\n    title: \"Секреты Пик раскрыты! ✨\",\n    description: \"Хочешь узнать все мои тайны? Моя лень — это искусство, а сарказм — всего лишь форма привязанности. Присоединяйся к моей теневой империи! *злобно хихикает* 😈💅\",\n    description_label: \"Описание от Пик:\"\n  }\n};\n\nconst locale = modalData[guild.preferredLocale] ?? modalData['en-US'];\n\nawait reply({\n  type: 9, // Это тип ответа для показа модального окна в Discord\n  data: {\n    custom_id: \"pik_ad_modal\", // Уникальный ID для этого модального окна\n    title: locale.title,\n    components: [\n      {\n        type: 1, // ActionRow\n        components: [\n          {\n            type: 4, // TextInput (поле для ввода текста)\n            custom_id: \"ad_description_field\",\n            style: 2, // Стиль поля: 1 для короткого, 2 для многострочного\n            label: locale.description_label,\n            value: locale.description,\n            required: false // Необязательное поле\n          }\n        ]\n      }\n    ]\n  }\n});\n"
+            "code": "const messages = {\n  \"en-US\": {\n    modal: {\n      title: \"Pik's Secrets Revealed! ✨\",\n      description: \"Want to know all my secrets? My laziness is an art, and sarcasm is just a form of affection. Join my shadow empire! *evil cackle* 😈💅\",\n      description_label: \"Pik's Description:\"\n    }\n  },\n  ru: {\n    modal: {\n      title: \"Секреты Пик раскрыты! ✨\",\n      description: \"Хочешь узнать все мои тайны? Моя лень — это искусство, а сарказм — всего лишь форма привязанности. Присоединяйся к моей теневой империи! *злобно хихикает* 😈💅\",\n      description_label: \"Описание от Пик:\"\n    }\n  }\n};\n\nconst locale = messages[guild.preferredLocale] ?? messages['en-US'];\n\nawait reply({\n  type: 9, // Это тип ответа для показа модального окна в Discord\n  data: {\n    custom_id: \"pik_ad_modal_v2\", // Уникальный ID для этого модального окна\n    title: locale.modal.title,\n    components: [\n      {\n        type: 1, // ActionRow\n        components: [\n          {\n            type: 4, // TextInput (поле для ввода текста)\n            custom_id: \"ad_description_field_v2\",\n            style: 2, // Стиль поля: 1 для короткого, 2 для многострочного\n            label: locale.modal.description_label,\n            value: locale.modal.description,\n            required: false // Необязательное поле\n          }\n        ]\n      }\n    ]\n  }\n});\n"
         }
     ]
 }
